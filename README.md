@@ -10,7 +10,7 @@ other options and resources will be added.
 
 
 ## Installation
-The source code is hosted on [GitHub](https://github.com/lexust1).
+The source code is hosted on [GitHub](https://github.com/lexust1/fia).
 
 Binary installers are available on [PyPI](https://pypi.org/project/) 
 and [Conda](https://docs.conda.io/).
