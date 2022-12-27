@@ -8,3 +8,4 @@
 /src/fia.egg-info/
 /.coverage
 /setenv.sh
+/.idea
