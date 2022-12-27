@@ -1,0 +1,10 @@
+**/.mypy_cache/
+**/.pytest_cache/
+/.tox/
+/examples/
+/experiments/
+/notes/
+/old_files/
+/src/fia.egg-info/
+/.coverage
+/setenv.sh

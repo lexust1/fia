@@ -1,0 +1,169 @@
+########################################################################
+# build-system
+[build-system]
+requires = [
+    "setuptools >= 63.4.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+########################################################################
+# project
+[project]
+name = "fia"
+version = "0.1.0"
+description = "fia (financial analyzer) package for Python."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Aleksey Ustinov", email = "new_email@gmail.com"}
+]
+keywords = [
+    "finance",
+    "portfolio",
+    "trading",
+    "crypto",
+    "TradingView",
+    "AlphaVantage"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Framework :: Jupyter :: JupyterLab",
+    "Development Status :: 2 - Pre-Alpha",
+    "Natural Language :: English"
+]
+dependencies = [
+    "pandas>=1.5",
+    "websocket-client>=1.4.1",
+    "pandas-stubs>=1.5",
+    "types-requests>=2.28",
+    "requests",
+    "python-socks"
+]
+[project.optional-dependencies]
+test = [
+    "flake8>=6.0.0",
+    "Flake8-pyproject>=1.2.2",
+    "mypy>=0.990",
+    "pytest>=7.1.2",
+    "pytest-skip-slow>=0.0.3",
+    "pytest-mock>=3.7.0",
+    "pytest-repeat>=0.9.1",
+    "pytest-cov>=3.0.0",
+    "tox>=4.0.15"
+]
+# dynamic = []
+[project.urls]
+"Homepage" = "https://github.com/lexust1"
+"Bug Tracker" = "https://github.com/lexust1"
+# Entry point
+[project.scripts]
+fia = "fia.main:main"
+
+########################################################################
+# Setuptools
+[tool.setuptools]
+package-dir = {"" = "src"}
+# similar to find_packages() in setup.py
+[tool.setuptools.packages.find]
+where = ["src"]
+
+########################################################################
+# Flake8 (by using Flake8-pyproject>=1.2.2)
+[tool.flake8]
+# Ignore "imported but unused" in __init__.py
+per-file-ignores = ["__init__.py:F401"]
+max-line-length = 79
+max-doc-length = 72
+
+########################################################################
+# Pylint
+[tool.pylint.basic]
+good-names = ["e", "df", "m", "p", "tz", "ws"]
+
+[tool.pylint.format]
+max-line-length = 79
+
+[tool.pylint.design]
+# 5 args and 7 attributes are to strict for the package. We need to pass
+# a lot of stantard variables (tickey_sym, exchange, currency, timezone,
+# etc.). Many of the them set by default.
+max-args = 12
+max-attributes = 12
+
+[tool.pylint.messages_control]
+# Why disabled:
+# - "logging-fstring-interpolation" - f-sring is more readable in this
+#   case. Also, logging.Formatter is set to f-string style (style="{")
+# - "import-outside-toplevel" - cli_args and set_logger are only
+#   imported when package is run over CLI. So the are located in main-
+#   function.
+disable = [
+    "logging-fstring-interpolation",
+    "import-outside-toplevel",
+    "fixme"
+]
+
+########################################################################
+# Mypy
+[tool.mypy]
+# The pathe where to find generated stubs.
+# mypy_path = "stubs"
+mypy_path = "src/fia/stubs"
+# Excluded folders and files.
+exclude = "src/fia/stubs"
+# Go to the folder with pyproject.toml and use
+# mypy src/fia/__init__.py src/fia/main.py src/fia/cli_args.py src/fia/constants.py src/fia/utils
+
+########################################################################
+# Tox
+# tox -r
+[tool.tox]
+legacy_tox_ini = """
+    [tox]
+    env_list =
+        py310
+        py311
+
+    [base]
+    passenv =
+        TV_USERNAME
+        TV_PASSWORD
+    deps =
+        flake8>=6.0.0
+        Flake8-pyproject>=1.2.2
+        mypy>=0.990
+        pylint>=2.15.5
+        pytest>=7.1.2
+        pytest-skip-slow>=0.0.3
+        pytest-mock>=3.7.0
+        pytest-repeat>=0.9.1
+        pytest-cov>=3.0.0
+
+    [testenv:py310]
+    deps =
+        {[base]deps}
+    passenv =
+        {[base]passenv}
+    commands =
+        flake8 src/fia
+        pylint src/fia
+        mypy src/fia
+        pytest --cov=fia #--slow
+
+    [testenv:py311]
+    deps =
+        {[base]deps}
+    passenv =
+        {[base]passenv}
+    commands =
+        flake8 src/fia
+        pylint src/fia
+        mypy src/fia
+        pytest --cov=fia --slow
+"""
+
+
+
