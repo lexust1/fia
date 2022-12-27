@@ -9,3 +9,4 @@
 /.coverage
 /setenv.sh
 /.idea
+/dist/

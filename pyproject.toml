@@ -17,7 +17,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Aleksey Ustinov", email = "new_email@gmail.com"}
+    {name = "Aleksey Ustinov", email = "augithub@zohomail.com"}
 ]
 keywords = [
     "finance",
@@ -57,8 +57,13 @@ test = [
 ]
 # dynamic = []
 [project.urls]
-"Homepage" = "https://github.com/lexust1"
-"Bug Tracker" = "https://github.com/lexust1"
+"Homepage" = "https://github.com/lexust1/fia"
+"Bug Tracker" = "https://github.com/lexust1/fia/issues"
+"Source Code" = "https://github.com/lexust1/fia"
+#documentation = "https://readthedocs.org"
+#repository = "https://github.com"
+#changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
 # Entry point
 [project.scripts]
 fia = "fia.main:main"
