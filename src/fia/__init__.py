@@ -51,8 +51,8 @@ The package includes the following modules:
     - constants.py: Includes all constants and enums.
 
 Examples:
-    See a detailed explanation with examples on:
-    # TODO: add link to README with documentation on Github.
+    See the detailed explanation with examples on:
+    https://github.com/lexust1/fia/blob/main/README.md
 """
 import logging
 from logging import NullHandler

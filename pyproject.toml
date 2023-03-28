@@ -53,6 +53,7 @@ test = [
     "pytest-mock>=3.7.0",
     "pytest-repeat>=0.9.1",
     "pytest-cov>=3.0.0",
+    "python-dotenv>=0.21.0",
     "tox>=4.0.15"
 ]
 # dynamic = []

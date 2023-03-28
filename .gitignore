@@ -7,6 +7,10 @@
 /old_files/
 /src/fia.egg-info/
 /.coverage
-/setenv.sh
+**/setenv.sh
 /.idea
 /dist/
+**/.ipynb_checkpoints/
+**/.env
+**/*.html
+/analysis/data/

@@ -314,8 +314,8 @@ The TvDataCollector has the following public methods:
   - Low: the lowest price of the chosen timeframe.
   - Close: the closing price of the chosen timeframe.
   - Volume: the market volume.     
-  The values usually are in USD but check the currency and the unit of measure on 
-  the exchange.
+  The price values usually are in USD but check the currency and the unit of measure on 
+  the exchange. 
   If you would like to change the timezone see the following example:
     ```python
     # tvdc is an instance of the TvDataCollector class.
